@@ -1,18 +1,23 @@
-import { login, logout, getInfo } from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { logout, getInfo } from '@/api/user'
+import { setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
 const getDefaultState = () => {
   return {
-    token: getToken(),
+    token: '',
     name: '',
-    avatar: ''
+    avatar: '',
+    random: ''
   }
 }
 
 const state = getDefaultState()
 
 const mutations = {
+  setToken(state, token) {
+    state.token = token
+    setToken(token)
+  },
   RESET_STATE: (state) => {
     Object.assign(state, getDefaultState())
   },
@@ -24,24 +29,26 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  upRandom: (state, random) => {
+    state.random = random
   }
 }
 
 const actions = {
   // user login
-  login({ commit }, userInfo) {
-    const { username, password } = userInfo
-    return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
-    })
-  },
+  // login({ commit }, userInfo) {
+  //   const { username, password } = userInfo
+  //   return new Promise((resolve, reject) => {
+  //     login({ username: username.trim(), password: password }).then(response => {
+  //       const { data } = response
+  //       commit('SET_TOKEN', data.token)
+  //       resolve()
+  //     }).catch(error => {
+  //       reject(error)
+  //     })
+  //   })
+  // },
 
   // get user info
   getInfo({ commit, state }) {

@@ -2,11 +2,15 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/vue-admin-template/user/login',
+    url: '/user-service/user/login',
     method: 'post',
     data
   })
 }
+
+// export function authCode(random) {
+//   return request.get(`/user-service/user/imageCode/${random}`)
+// }
 
 export function getInfo(token) {
   return request({
