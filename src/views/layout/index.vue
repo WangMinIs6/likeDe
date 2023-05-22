@@ -1,5 +1,5 @@
 <template>
-  <el-container style="height: 500px;">
+  <el-container class=" operation-wrapper" style="height: 500px;">
     <el-header style="text-align: right; font-size: 12px">
       <img src="https://likede2-admin.itheima.net/img/logo.3673fab5.png" alt="">
       <!-- <el-dropdown @command="userBtn"> -->
@@ -17,71 +17,81 @@
       <!-- </el-dropdown> -->
     </el-header>
     <el-container>
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1', '5']">
-          <div class="index">
-            <i class="el-icon-s-home" /><span>帝可得</span>
-          </div>
+      <el-aside width="170px" style="background-color: rgb(238, 241, 246)">
+        <el-menu :default-openeds="['0', '8']">
+          <el-menu-item index="0">
+            <i class="el-icon-s-home" />
+            <span slot="title" class="spanitem"> 帝可得</span>
+          </el-menu-item>
           <el-submenu index="1">
-            <template slot="title"><i class="el-icon-s-order" />工单管理</template>
+            <template slot="title"><i class="el-icon-s-order" /><span class="spanitem">工单管理</span></template>
             <el-menu-item-group>
               <template slot="title" />
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
+              <el-menu-item index="1-1"><span class="spanitem item">运营工单</span></el-menu-item>
+              <el-menu-item index="1-2"><span class="spanitem item">运维工单</span></el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="分组2">
+            <!-- <el-menu-item-group title="分组2">
               <el-menu-item index="1-3">选项3</el-menu-item>
             </el-menu-item-group>
             <el-submenu index="1-4">
               <template slot="title">选项4</template>
               <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-            </el-submenu>
+            </el-submenu> -->
           </el-submenu>
           <el-submenu index="2">
-            <template slot="title"><i class="el-icon-location" />点位管理</template>
+            <template slot="title"><i class="el-icon-location" /><span class="spanitem">点位管理</span></template>
             <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
+              <!-- <template slot="title">分组一</template> -->
+              <el-menu-item index="2-1"><span class="spanitem item">区域管理</span></el-menu-item>
+              <el-menu-item index="2-2"><span class="spanitem item">点位管理</span></el-menu-item>
+              <el-menu-item index="2-3"><span class="spanitem item">合作商管理</span></el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="分组2">
+            <!-- <el-menu-item-group title="分组2">
               <el-menu-item index="2-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="2-4">
+            </el-menu-item-group> -->
+            <!-- <el-submenu index="2-4">
               <template slot="title">选项4</template>
               <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-            </el-submenu>
+            </el-submenu> -->
           </el-submenu>
-          <el-submenu index="3">
-            <template slot="title"><i class="el-icon-setting" />导航三</template>
+          <el-submenu index="3" translate="">
+            <template slot="title"><i class="el-icon-s-cooperation" /><span class="spanitem">设备管理</span></template>
             <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="3-1">选项1</el-menu-item>
-              <el-menu-item index="3-2">选项2</el-menu-item>
+              <!-- <template slot="title">分组一</template> -->
+              <el-menu-item index="3-1"><span class="spanitem item">设备管理</span></el-menu-item>
+              <el-menu-item index="3-2"><span class="spanitem item">设备状态</span></el-menu-item>
+              <el-menu-item index="3-3"><span class="spanitem item">设备类型管理</span></el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="3-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="3-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-            </el-submenu>
           </el-submenu>
           <el-submenu index="4">
-            <template slot="title"><i class="el-icon-setting" />人员管理</template>
+            <template slot="title"><i class="el-icon-s-custom" /><span class="spanitem">人员管理</span></template>
+            <el-menu-item-group>
+              <!-- <template slot="title">分组一</template> -->
+              <el-menu-item index="4-1"><span class="spanitem item">人员列表</span></el-menu-item>
+              <el-menu-item index="4-2"><span class="spanitem item">人员统计</span></el-menu-item>
+              <el-menu-item index="4-3"><span class="spanitem item">工作量列表</span></el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
           <el-submenu index="5">
-            <template slot="title"><i class="el-icon-setting" />商品管理</template>
+            <template slot="title"><i class="el-icon-s-goods" /><span class="spanitem">商品管理</span></template>
+            <el-menu-item-group>
+              <!-- <template slot="title">分组一</template> -->
+              <el-menu-item index="5-1"><span class="spanitem item">商品类型</span></el-menu-item>
+              <el-menu-item index="5-2"><span class="spanitem item">商品管理</span></el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
-          <div class="index">
-            <i class="el-icon-s-home" /><span>策略管理</span>
-          </div>
-          <div class="index">
-            <i class="el-icon-s-home" /><span>订单管理</span>
-          </div>
-          <div class="index">
-            <i class="el-icon-s-home" /><span>对账统计</span>
-          </div>
+          <el-menu-item index="6">
+            <i class="el-icon-s-opportunity" />
+            <span slot="title" class="spanitem">策略管理</span>
+          </el-menu-item>
+          <el-menu-item index="7">
+            <i class="el-icon-s-order" />
+            <span slot="title" class="spanitem">订单管理</span>
+          </el-menu-item>
+          <el-menu-item index="8">
+            <i class="el-icon-edit" />
+            <span slot="title" class="spanitem">对账统计</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>
@@ -120,11 +130,11 @@ export default {
 
 <style lang="scss">
 
+  .operation-wrapper {
+  width: 100% !important;
   .el-header {
     background-color: #5373e0;
-    // position: fixed;
-    // top: 0;
-    // left: 0;
+    width: 100%;
     color: #333;
     line-height: 60px;
     display: flex;
@@ -139,20 +149,48 @@ export default {
       width: 90px;
     }
   }
-  .index{
-    display: flex;
-    // justify-content: space-between;
-    align-items: center;
-    height: 60px;
+  .el-aside {
+    // width:170px;
+    height: calc(100vh - 61px); //61px为顶部header盒子高度
+    //主体滚动
+    overflow-y: auto;
+    overflow-x: hidden;
+    // display: none;
+    color: #333;
+    // overflow: hidden;
+    .el-menu{
+    font-size: 16px;
+    .spanitem{
+      padding-left: 10px;
+        }
+    .item{
+      padding-left: 42px;
+    }
     i{
-      margin: 0 10px 0 25px;
-      color: #909399;
-      font-size: 18px;
+      margin-right:7px ;
+      padding-left: 5px;
+    }
+    .el-submenu__title{
+      padding-left: 15px!important;
+    }
+    .el-menu-item{
+      // width: 120px!important;
+      padding-right: 0 !important;
+      padding-left: 15px!important;
+      // overflow: hidden!important;;
+
     }
   }
-
-  .el-aside {
-    color: #333;
-
   }
+    .el-aside::-webkit-scrollbar {
+    display: none;
+}
+  .el-main {
+    padding: 10px 16px 0 16px !important;
+    height: calc(100vh - 61px); //61px为顶部header盒子高度
+    overflow-y: auto;
+  }
+
+}
+
 </style>
