@@ -46,7 +46,7 @@
             <el-menu-item-group>
               <!-- <template slot="title">分组一</template> -->
               <el-menu-item index="4-1"><span class="spanitem item">人员列表</span></el-menu-item>
-              <el-menu-item index="4-2"><span class="spanitem item">人员统计</span></el-menu-item>
+              <el-menu-item index="4-2"><span class="spanitem item">人效统计</span></el-menu-item>
               <el-menu-item index="4-3"><span class="spanitem item">工作量列表</span></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -119,12 +119,6 @@ export default {
       if (index === '5-1') return router.push('/goodsType')
       if (index === '5-2') return router.push('/commodity')
       router.push(index === '6' ? '/strategic' : index === '7' ? '/order' : index === '8' ? '/reconciliation' : '/')
-
-      // if (index > 3) {
-      //   // if (index === 1) {
-
-      //   // }
-      // }
     }
   }
 

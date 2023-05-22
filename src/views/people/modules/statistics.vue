@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    人员统计
+    人统计
   </div>
 </template>
 
