@@ -15,6 +15,7 @@ export function removeToken() {
 }
 
 const userInfo = 'myLikeUser'
+
 export function getUserInfo() {
   return Cookies.get(userInfo)
 }
