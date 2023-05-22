@@ -27,9 +27,9 @@
 </template>
 <script>
 import store from '@/store'
-import { login } from '@/api/user'
 // import { mapActions } from 'vuex'
 // import { setToken } from '@/utils/auth'
+import { authCode } from '@/api/user'
 
 export default {
   name: 'Login',
@@ -60,7 +60,7 @@ export default {
           trigger: 'blur'
         }, {
           min: 6,
-          max: 16,
+          max: 26,
           message: '密码长度应该为6-16位之间',
           trigger: 'blur'
 
@@ -82,23 +82,15 @@ export default {
       for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a))
       return n
     },
-    async login() {
-      const data = await login(this.loginForm)
-      console.log(data)
-      this.$message(data.msg)
-      console.log(store.getters.token)
-      if (data.success) {
-        store.commit('user/setToken', data.token)
-        console.log('成功')
-        setTimeout(() => {
-          this.$router.push('./')
-        }, 1500)
-      }
+    login() {
+      this.$refs.form.validate()
+      if (!this.loginForm.loginName || !this.loginForm.password || !this.loginForm.code) return
+      store.dispatch('user/login', this.loginForm)
     },
     refresh() {
       const random = this.randomString(30)
       store.commit('user/upRandom', random)
-      this.imageCode = `https://likede2-java.itheima.net/api/user-service/user/imageCode/${random}`
+      this.imageCode = authCode(random)
       this.loginForm.clientToken = random
     }
 

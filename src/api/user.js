@@ -7,18 +7,18 @@ export function login(data) {
     data
   })
 }
-
-// export function authCode(random) {
-//   return request.get(`/user-service/user/imageCode/${random}`)
-// }
-
-export function getInfo(token) {
-  return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
+// 验证码
+export function authCode(random) {
+  return `https://likede2-java.itheima.net/api/user-service/user/imageCode/${random}`
 }
+
+// export function getInfo(token) {
+//   return request({
+//     url: '/vue-admin-template/user/info',
+//     method: 'get',
+//     params: { token }
+//   })
+// }
 
 export function logout() {
   return request({

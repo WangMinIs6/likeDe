@@ -13,13 +13,9 @@ router.beforeEach(async(to, from, next) => {
   const token = store.getters.token
   // console.log(token)
   if (token) {
-    if (to.path === './login') {
+    if (to.path === '/login') {
       next('/')
     } else {
-      if (!store.getters.userId) {
-        // 使用await的目的：接口返回用户信息以后，再跳转页面，确保跳到了目标页面一定是有用户信息的
-        await store.dispatch('user/getUserInfo')
-      }
       next()
     }
   } else {

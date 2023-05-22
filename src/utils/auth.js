@@ -13,3 +13,16 @@ export function setToken(token) {
 export function removeToken() {
   return Cookies.remove(TokenKey)
 }
+
+const userInfo = 'myLikeUser'
+export function getUserInfo() {
+  return Cookies.get(userInfo)
+}
+
+export function setUserInfo(info) {
+  return Cookies.set(userInfo, info)
+}
+
+export function removeUserInfo() {
+  return Cookies.remove(userInfo)
+}
