@@ -3,7 +3,7 @@
   <div class="login-container">
     <img src="https://likede2-admin.itheima.net/img/logo.595745bd.png" class="login-logo" alt="">
     <el-card shadow="never" class="login-form">
-      <el-form ref="form" :model="loginForm" :rules="rules">
+      <el-form ref="form" :model="loginForm">
         <el-form-item prop="mobile">
           <el-input v-model="loginForm.loginName" placeholder="请输入用户名" style="width : 100%" />
         </el-form-item>
@@ -42,31 +42,31 @@ export default {
         code: '',
         loginType: 0
       },
-      imageCode: '',
-      rules: {
-        mobile: [{
-          required: true,
-          message: '请输入用户名号',
-          trigger: 'blur'
-        }, {
-          pattern: /^[\u4e00-\u9fa5a-zA-Z0-9]{4,12}$/,
-          message: '用户名格式不正确',
-          trigger: 'blur'
+      imageCode: ''
+      // rules: {
+      // mobile: [{
+      //   required: true,
+      //   message: '请输入用户名号',
+      //   trigger: 'blur'
+      // }, {
+      //   pattern: /^[\u4e00-\u9fa5a-zA-Z0-9]{4,12}$/,
+      //   message: '用户名格式不正确',
+      //   trigger: 'blur'
 
-        }],
-        password: [{
-          required: true,
-          message: '请输入密码',
-          trigger: 'blur'
-        }, {
-          min: 6,
-          max: 26,
-          message: '密码长度应该为6-16位之间',
-          trigger: 'blur'
+      // }],
+      // password: [{
+      //   required: true,
+      //   message: '请输入密码',
+      //   trigger: 'blur'
+      // }, {
+      //   min: 6,
+      //   max: 26,
+      //   message: '密码长度应该为6-16位之间',
+      //   trigger: 'blur'
 
-        }]
+      // }]
 
-      }
+      // }
     }
   },
   async created() {
@@ -83,7 +83,7 @@ export default {
       return n
     },
     login() {
-      this.$refs.form.validate()
+      // this.$refs.form.validate()
       if (!this.loginForm.loginName || !this.loginForm.password || !this.loginForm.code) return
       store.dispatch('user/login', this.loginForm)
     },
