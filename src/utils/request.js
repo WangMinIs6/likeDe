@@ -1,8 +1,9 @@
 /* 封装axios用于发送请求 */
 import axios from 'axios'
-import store from '@/store'
-import router from '@/router'
+// import store from '@/store'
+// import router from '@/router'
 import { Message } from 'element-ui'
+// import { getToken } from './auth'
 
 // 创建一个新的axios实例
 const request = axios.create({
@@ -12,10 +13,11 @@ const request = axios.create({
 
 // 添加请求拦截器
 request.interceptors.request.use(function(config) {
-  const { token } = store.state.user
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
+  // const { token } = getToken()
+  // console.log(token)
+  // if (token) {
+  // config.headers.Authorization = `Bearer ${token}`
+  // }
   // 在发送请求之前做些什么
   return config
 }, function(error) {
@@ -32,19 +34,20 @@ request.interceptors.response.use(function(response) {
   // 对响应错误做点什么  普通错误 + 401情况
   // console.dir(error)
   if (error.response) {
-    if (error.response.status === 401) {
-      // 给提示，清除无效token(vuex+本地)，拦到登录
-      Message.error('尊敬的用户，当前登录状态已过期！')
+    // if (error.response.status === 401) {
+    //   // 给提示，清除无效token(vuex+本地)，拦到登录
+    //   Message.error('尊敬的用户，当前登录状态已过期！')
 
-      // 提交清除token的mutation
-      store.commit('user/logout')
+    //   // 提交清除token的mutation
+    //   store.commit('user/logout')
 
-      // 跳转到登录
-      router.push('/login')
-    } else {
-      // 给提示
-      Message.error(error.response.data.message)
-    }
+    //   // 跳转到登录
+    //   router.push('/login')
+    // } else {
+    //   // 给提示
+    //   Message.error(error.response.data.message)
+    // }
+    Message.error(error.response.data.message)
 
     return Promise.reject(error)
   }

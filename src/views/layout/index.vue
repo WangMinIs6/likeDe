@@ -10,63 +10,63 @@
     </el-header>
     <el-container>
       <el-aside width="170px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['0', '8']" active-text-color="#6984ff" popper-class @select="pushBtn">
-          <el-menu-item index="0">
+        <el-menu :default-openeds="list" active-text-color="#6984ff" popper-class @select="pushBtn">
+          <el-menu-item index="1">
             <i class="el-icon-s-home" />
             <span slot="title" class="spanitem"> 帝可得</span>
           </el-menu-item>
-          <el-submenu index="1">
+          <el-submenu index="2">
             <template slot="title"><i class="el-icon-s-order" /><span class="spanitem">工单管理</span></template>
             <el-menu-item-group>
               <template slot="title" />
-              <el-menu-item index="1-1"><span class="spanitem item">运营工单</span></el-menu-item>
-              <el-menu-item index="1-2"><span class="spanitem item">运维工单</span></el-menu-item>
+              <el-menu-item index="2-1"><span class="spanitem item">运营工单</span></el-menu-item>
+              <el-menu-item index="2-2"><span class="spanitem item">运维工单</span></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="2">
+          <el-submenu index="3">
             <template slot="title"><i class="el-icon-location" /><span class="spanitem">点位管理</span></template>
             <el-menu-item-group>
               <!-- <template slot="title">分组一</template> -->
-              <el-menu-item index="2-1"><span class="spanitem item">区域管理</span></el-menu-item>
-              <el-menu-item index="2-2"><span class="spanitem item">点位管理</span></el-menu-item>
-              <el-menu-item index="2-3"><span class="spanitem item">合作商管理</span></el-menu-item>
+              <el-menu-item index="3-1"><span class="spanitem item">区域管理</span></el-menu-item>
+              <el-menu-item index="3-2"><span class="spanitem item">点位管理</span></el-menu-item>
+              <el-menu-item index="3-3"><span class="spanitem item">合作商管理</span></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="3" translate="">
+          <el-submenu index="4" translate="">
             <template slot="title"><i class="el-icon-s-cooperation" /><span class="spanitem">设备管理</span></template>
             <el-menu-item-group>
               <!-- <template slot="title">分组一</template> -->
-              <el-menu-item index="3-1"><span class="spanitem item">设备管理</span></el-menu-item>
-              <el-menu-item index="3-2"><span class="spanitem item">设备状态</span></el-menu-item>
-              <el-menu-item index="3-3"><span class="spanitem item">设备类型管理</span></el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="4">
-            <template slot="title"><i class="el-icon-s-custom" /><span class="spanitem">人员管理</span></template>
-            <el-menu-item-group>
-              <!-- <template slot="title">分组一</template> -->
-              <el-menu-item index="4-1"><span class="spanitem item">人员列表</span></el-menu-item>
-              <el-menu-item index="4-2"><span class="spanitem item">人效统计</span></el-menu-item>
-              <el-menu-item index="4-3"><span class="spanitem item">工作量列表</span></el-menu-item>
+              <el-menu-item index="4-1"><span class="spanitem item">设备管理</span></el-menu-item>
+              <el-menu-item index="4-2"><span class="spanitem item">设备状态</span></el-menu-item>
+              <el-menu-item index="4-3"><span class="spanitem item">设备类型管理</span></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="5">
+            <template slot="title"><i class="el-icon-s-custom" /><span class="spanitem">人员管理</span></template>
+            <el-menu-item-group>
+              <!-- <template slot="title">分组一</template> -->
+              <el-menu-item index="5-1"><span class="spanitem item">人员列表</span></el-menu-item>
+              <el-menu-item index="5-2"><span class="spanitem item">人效统计</span></el-menu-item>
+              <el-menu-item index="5-3"><span class="spanitem item">工作量列表</span></el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="6">
             <template slot="title"><i class="el-icon-s-goods" /><span class="spanitem">商品管理</span></template>
             <el-menu-item-group>
               <!-- <template slot="title">分组一</template> -->
-              <el-menu-item index="5-1"><span class="spanitem item">商品类型</span></el-menu-item>
-              <el-menu-item index="5-2"><span class="spanitem item">商品管理</span></el-menu-item>
+              <el-menu-item index="6-1"><span class="spanitem item">商品类型</span></el-menu-item>
+              <el-menu-item index="6-2"><span class="spanitem item">商品管理</span></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="6">
+          <el-menu-item index="7">
             <i class="el-icon-s-opportunity" />
             <span slot="title" class="spanitem">策略管理</span>
           </el-menu-item>
-          <el-menu-item index="7">
+          <el-menu-item index="8">
             <i class="el-icon-s-order" />
             <span slot="title" class="spanitem">订单管理</span>
           </el-menu-item>
-          <el-menu-item index="8">
+          <el-menu-item index="9">
             <i class="el-icon-edit" />
             <span slot="title" class="spanitem">对账统计</span>
           </el-menu-item>
@@ -87,7 +87,8 @@ import { removeToken, removeUserInfo } from '@/utils/auth'
 export default {
   data() {
     return {
-      name: ''
+      name: '',
+      list: ['1', '2']
     }
   },
   created() {
@@ -104,28 +105,36 @@ export default {
     },
     pushBtn(index) {
       console.log(index)
-      if (index === '0') return router.push('/home')
-      if (index === '1-1') return router.push('/article')
-      if (index === '1-2') return router.push('/maintenance')
-      if (index === '2-1') return router.push('/area')
-      if (index === '2-2') return router.push('/point')
-      if (index === '2-3') return router.push('/cooperation')
-      if (index === '3-1') return router.push('/equipment')
-      if (index === '3-2') return router.push('/status')
-      if (index === '3-3') return router.push('/type')
-      if (index === '4-1') return router.push('/people')
-      if (index === '4-2') return router.push('/statistics')
-      if (index === '4-3') return router.push('/WorkloadList')
-      if (index === '5-1') return router.push('/goodsType')
-      if (index === '5-2') return router.push('/commodity')
-      router.push(index === '6' ? '/strategic' : index === '7' ? '/order' : index === '8' ? '/reconciliation' : '/')
+      if (index === '1') return router.push('/home')
+      if (index === '2-1') return router.push('/article')
+      if (index === '2-2') return router.push('/maintenance')
+      if (index === '3-1') return router.push('/area')
+      if (index === '3-2') return router.push('/point')
+      if (index === '3-3') return router.push('/cooperation')
+      if (index === '4-1') return router.push('/equipment')
+      if (index === '4-2') return router.push('/status')
+      if (index === '4-3') return router.push('/type')
+      if (index === '5-1') return router.push('/people')
+      if (index === '5-2') return router.push('/statistics')
+      if (index === '5-3') return router.push('/WorkloadList')
+      if (index === '6-1') return router.push('/goodsType')
+      if (index === '6-2') return router.push('/commodity')
+      router.push(index === '7' ? '/strategic' : index === '8' ? '/order' : index === '9' ? '/reconciliation' : '/')
     }
   }
 
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+// /* 文字 */
+// ::v-deep.el-submenu.is-active > .el-submenu__title {
+//   color: #409eff !important;
+// }
+// /* icon图标也跟着变 */
+// ::v-deep .el-submenu.is-active > .el-submenu__title i {
+//   color: #409eff !important;
+// }
 
   .operation-wrapper {
   width: 100% !important;
@@ -168,9 +177,16 @@ export default {
       margin-right:7px ;
       padding-left: 5px;
     }
-    .el-submenu__title{
+   ::v-deep .el-submenu__title{
       padding-left: 15px!important;
     }
+   ::v-deep .el-submenu.is-active > .el-submenu__title {
+    // background-color: #ecf5ff;
+    color: #5373e0 !important;
+    i{
+    color: #5373e0 !important;
+   }
+}
     .el-menu-item{
       // width: 120px!important;
       padding-right: 0 !important;
@@ -179,6 +195,7 @@ export default {
 
     }
   }
+
   }
     .el-aside::-webkit-scrollbar {
     display: none;
